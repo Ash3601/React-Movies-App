@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import BootstrapCards from "./BootstrapCards";
-import { Button, Card, Container, Row, Col } from "react-bootstrap";
 
 const movies = [
   {
@@ -56,9 +56,9 @@ const movies = [
   },
 ];
 
-const movieList = movies.map((movie) => {
+const movieList = movies.map((movie, idx) => {
   return (
-    <Col lg={4} md={4}>
+    <Col lg={4} md={4} key={idx}>
       <BootstrapCards
         title={movie.title}
         text={movie.text}

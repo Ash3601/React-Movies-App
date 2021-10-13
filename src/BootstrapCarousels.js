@@ -1,17 +1,7 @@
 // import React from "react";
 
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-  Container,
-  Carousel,
-} from "react-bootstrap";
-
 import React, { Component } from "react";
+import { Carousel } from "react-bootstrap";
 import banner from "./assets/banner.jpg";
 import kong from "./assets/kong.jpg";
 import kong2 from "./assets/kong2.jpg";

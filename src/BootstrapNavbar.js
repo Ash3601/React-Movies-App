@@ -1,19 +1,14 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useParams,
-} from "react-router-dom";
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-  Container,
+  Container, Nav, Navbar
 } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import BootstrapCardsList from "./BootstrapCardsList";
+import BootstrapCarousels from "./BootstrapCarousels";
+import Favorites from "./Favorites";
+
+
 // import Home from "./Home";
 // import AboutUs from "./AboutUs";
 // import ContactUs from "./ContactUs";
@@ -21,10 +16,12 @@ import {
 class BootstrapNavbar extends React.Component {
   render() {
     return (
-      <>
+      <Router>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand href="#home">Movies</Navbar.Brand>
+            <LinkContainer to="/">
+              <Navbar.Brand to="/users">Movies</Navbar.Brand>
+            </LinkContainer>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav
@@ -35,13 +32,25 @@ class BootstrapNavbar extends React.Component {
                   fontWeight: "bold",
                 }}
               >
-                <Nav.Link href="#features">Favorites</Nav.Link>
+                <LinkContainer to="/favorites">
+                  <Nav.Link to="/favorites">Favorites</Nav.Link>
+                </LinkContainer>
                 {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
               </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
-      </>
+        <Switch>
+          <Route exact path="/">
+            <BootstrapCarousels />
+            <BootstrapCardsList />
+          </Route>
+
+          <Route path="/favorites">
+            <Favorites />
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 }
