@@ -1,8 +1,6 @@
 import ls from "local-storage";
 import React, { Component } from "react";
 import { Button, Card } from "react-bootstrap";
-import Favorites from "./Favorites";
-import { useHistory } from "react-router-dom";
 let favorites = [];
 
 const addToFavorites = (object, favorite) => {
@@ -14,7 +12,7 @@ const addToFavorites = (object, favorite) => {
   } catch (err) {
     favorites = [];
   }
-  console.log("favorites value", favorites);
+
   if (favorite !== "true") {
     const movieExist = favorites.find((movie) => movie.title === object.title);
 
@@ -26,11 +24,11 @@ const addToFavorites = (object, favorite) => {
   } else if (favorite === "true") {
     let card = document.getElementById(object.title);
     card.style.display = "none";
-    console.log("removing the movie from favorites");
+
     for (var i = 0; i < favorites.length; i++) {
       if (favorites[i].title === object.title) {
         favorites.splice(i, 1);
-        console.log("Before running Favorites component");
+
         // <Favorites refresh={i + "abcde"} />;
         ls.remove("favorites");
         ls.set("favorites", JSON.stringify(favorites));

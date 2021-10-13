@@ -2,7 +2,6 @@ import ls from "local-storage";
 import React, { Component } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import BootstrapCards from "./BootstrapCards";
-import { useHistory } from "react-router-dom";
 
 function fun() {
   let favorites = [
@@ -84,14 +83,9 @@ export class Favorites extends Component {
   // componen
   // this.setState({ refresh: this.props.refresh });
   render() {
-    console.log("Re-rendering favorites");
-    console.log("Getting props values for refresh as", this.props.refresh);
     // this.setState({ refresh: "true" });
     return (
-      window.addEventListener("storage", (e) => {
-        console.log("Listening to the storage events");
-        console.log(e);
-      }),
+      window.addEventListener("storage", (e) => {}),
       (this.movieList = fun()),
       (
         <>
